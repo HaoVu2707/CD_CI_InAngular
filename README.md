@@ -8,7 +8,7 @@ CI/CD được viết tắt của cụm từ : `Continuous Integration` và `Con
 <br>
 <b> CI/CD pipeline </b> 
 
-<b> Your code -> Commit -> Build -> Automated tests -> Deploy</b> <br>
+  <b> <i> Your code -> Commit -> Build -> Automated tests -> Deploy </i> </b> <br>
 
 Nhìn nhận tổng quan thì CI/CD pipeline thường gồm các bước sau:
 
@@ -20,8 +20,8 @@ Nhìn nhận tổng quan thì CI/CD pipeline thường gồm các bước sau:
   - System tests. Test toàn bộ hệ thống trong một môi trường càng giống với môi trường production càng tốt.
 4. Deploy: Phiên bản đã được build sẽ được đưa lên production.
 
-# CI
-<i>CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể. Cách tiếp cận này giảm thiểu vấn đề tích hợp và cho phép phát triển phần mềm nhanh hơn.</i>
+# Continuous Integration (CI)
+<i>CI (Continuous Integration)là quy trình để build và test tự động. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể. Cách tiếp cận này giảm thiểu vấn đề tích hợp và cho phép phát triển phần mềm nhanh hơn.</i>
 
 Một quá trình CI bắt đầu bằng việc người lập trình commit code lên Repository (github chẳng hạn). Bất kỳ thay đổi nào cũng sẽ tạo một vòng đời CI. Các bước trong một quá trình CI thường như sau:
 
@@ -40,4 +40,23 @@ Chính vì vậy Developer cần build, Commit code thường xuyên để tìm 
   - Giảm thiểu rủi ro nhờ việc phát hiện lỗi và fix sớm, tăng chất lượng phần mềm nhờ việc tự động test và inspect (đây cũng là một       trong những lợi ích của CI, code được inspect tự động dựa theo config đã cài đặt, đảm bảo coding style, chẳng hạn một function chỉ       được dài không quá 10 dòng code ...)
   - Giảm thiểu những quy trình thủ công lặp đi lặp lại (build css, js, migrate, test...), thay vì đó là build tự động, chạy test tự       động.
   - Sinh ra phần mềm có thể deploy ở bất kì thời gian, địa điểm.
-  
+
+# Continuous Delivery (CD)
+
+Quá trình Continuous Delivery :
+![](https://viblo.asia/uploads/50e5d6e9-b0db-467b-bb9f-a6871a6ffef6.png)
+
+Trong khi Continuous Integration là quy trình để build và test tự động, thì Continuous Delivery (tạm dịch là chuyển giao liên tục) lại nâng cao hơn một chút, bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous Delivery cho phép developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (production). Những bài test này bao gồm UI testing, load testing, integration testing, API testing... Nó tự động hoàn toàn quy trình release phần mềm.
+
+Continuous Delivery được thực hiện bằng cách sử dụng Deployment Pipeline.
+
+![](https://viblo.asia/uploads/0976a518-5fbb-4377-86b6-813376e20a65.png)
+
+`Deployment Pipeline` có đặc điểm chính như sau :
+    - Chia quy trình chuyển giao phần mềm thành các giai đoạn. Mỗi giai đoạn có mục tiêu xác minh chất lượng của các tính năng mới từ       một góc độ khác nhau để kiểm định chức năng và tránh lỗi ảnh hưởng đến người dùng. 
+    - Pipeline sẽ cung cấp phản hồi cho nhóm trong việc cung cấp tính năng mới. Ở góc độ trừu tượng hơn, deployment pipeline là quy         trình để chuyển phần mềm từ version control đến tay người dùng. 
+    - Mỗi thay đổi đến phần mềm sẽ đi qua một quy trình phức tạp để được phát hành.
+    
+<b> => Lưu ý: </b>
+Môi trường Staging cho phép xem trước các thay đổi (giao diện, bố cục) của trang web, trước khi các thay đổi được dùng chính thức cho trang web của dự án.
+
